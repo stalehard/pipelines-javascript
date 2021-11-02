@@ -15,7 +15,7 @@ steps:
   displayName: 'Install Node.js'
 - task: CustomTask@0
   inputs:
-    samplestring: 'Hello'
+    samplestring: 'User!'
 
 - script: |
     npm install
