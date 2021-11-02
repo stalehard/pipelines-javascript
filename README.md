@@ -1,6 +1,7 @@
+# Sample NodeJS application for Azure Pipelines docs
+
 [![Build Status](https://dev.azure.com/andreyivanov0209/test/_apis/build/status/AndreyIvanov42.pipelines-javascript?branchName=master)](https://dev.azure.com/andreyivanov0209/test/_build/latest?definitionId=1&branchName=master)
 
-# Sample NodeJS application for Azure Pipelines docs
 
 For information on how to set up a pipeline for this repository, see [Create your first pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops).
 For more information on building JavaScript or NodeJS applications, see [JavaScript](https://docs.microsoft.com/azure/devops/pipelines/languages/javascript).
