@@ -15,16 +15,12 @@ steps:
   displayName: 'Install Node.js 10.x'
 - script: |
     which node
-    sudo which node
-    sudo node -v
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js 14.x'
 - script: |
     which node
-    sudo which node
-    sudo node -v
 - task: CustomTask@0
   inputs:
     samplestring: 'User!'
