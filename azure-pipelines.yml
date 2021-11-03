@@ -12,11 +12,15 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  displayName: 'Install Node.js 10.x'
+- script: |
+    which node
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
-
+  displayName: 'Install Node.js 14.x'
+- script: |
+    which node
 - task: CustomTask@0
   inputs:
     samplestring: 'User!'
