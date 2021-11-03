@@ -13,6 +13,10 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+
 - task: CustomTask@0
   inputs:
     samplestring: 'User!'
