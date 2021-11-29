@@ -21,6 +21,16 @@ steps:
   displayName: 'Install Node.js 14.x'
 - script: |
     type -P node
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+
 - task: CustomTask@0
   inputs:
     samplestring: 'User!'
