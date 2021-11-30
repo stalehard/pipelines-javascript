@@ -6,31 +6,16 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'windows-latest'
+pool: Default
+  #vmImage: 'windows-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js 10.x'
-- script: |
-    type -P node
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js 14.x'
 - script: |
     type -P node
-
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: CustomTask@0
   inputs:
