@@ -14,12 +14,6 @@ steps:
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js 14.x'
-- script: |
-    type -P node
-
-- task: CustomTask@0
-  inputs:
-    samplestring: 'User!'
 
 - script: |
     npm install
