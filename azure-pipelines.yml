@@ -1,25 +1,17 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
-trigger:
-- master
-
-pool: Default
-  #vmImage: 'windows-latest'
+pool:
+  vmImage: windows-latest
 
 steps:
-- task: NodeTool@0
+- task: PowerShell@2
   inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js 14.x'
+    targetType: 'inline'
+    script: |
+      Get-Process | Out-File -FilePath $(Agent.BuildDirectory)\a\Process.txt
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)\a'
+    publishLocation: 'pipeline'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-  
-- task: Testtask@0
-  inputs:
-    samplestring: 'test'
+- download: current
+  displayName: Get pipeline artifacts files
+  retryCountOnTaskFailure: 3
