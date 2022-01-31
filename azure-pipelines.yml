@@ -6,12 +6,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Get-Process | Out-File -FilePath $(Agent.BuildDirectory)\a\Process.txt
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)\a'
-    publishLocation: 'pipeline'
-
-- download: current
-  displayName: Get pipeline artifacts files
-  retryCountOnTaskFailure: 3
+      Start-Sleep -s 15
