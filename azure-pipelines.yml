@@ -1,4 +1,4 @@
-pool: 'default'
+pool: default
   # vmImage: windows-latest
 
 steps:
