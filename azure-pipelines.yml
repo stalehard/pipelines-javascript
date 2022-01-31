@@ -6,4 +6,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Start-Sleep -s 15
+      Start-Sleep -s 60
