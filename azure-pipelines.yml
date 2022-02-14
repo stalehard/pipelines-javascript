@@ -1,5 +1,5 @@
-pool: default
-  # vmImage: windows-latest
+pool: #default
+  vmImage: windows-latest
 
 steps:
 - task: PowerShell@2
