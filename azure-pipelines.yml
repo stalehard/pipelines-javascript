@@ -7,3 +7,8 @@ steps:
     targetType: 'inline'
     script: |
       Start-Sleep -s 600
+
+- task: TwineAuthenticate@0
+  displayName: Twine Authenticate
+  inputs:
+    pythonUploadServiceConnection: pythontest
