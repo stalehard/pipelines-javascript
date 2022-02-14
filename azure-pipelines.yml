@@ -2,13 +2,22 @@ pool: #default
   vmImage: windows-latest
 
 steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Start-Sleep -s 600
-
 - task: TwineAuthenticate@0
-  displayName: Twine Authenticate
-  inputs:
-    pythonUploadServiceConnection: pythontest
+  displayName: 'Twine Authenticate V0'
+  inputs:
+    externalFeeds: 'pythontest'
+
+- script: |
+   pip install twine
+   cd "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package"
+   python setup.py sdist
+   python -m twine upload -r PipelineCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r PipelineCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r PipelineCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz"
+  displayName: 'twine upload same-org with retries'
+
+- script: |
+   python -m twine upload -r PublicCanary/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r PublicCanary/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r PublicCanary/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz"
+  displayName: 'twine upload same-org public with retries'
+
+- script: |
+   python -m twine upload -r CodeSharing-SU0/Test-Public/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r CodeSharing-SU0/Test-Public/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz" || python -m twine upload -r CodeSharing-SU0/Test-Public/PublicCanary --config-file $(PYPIRC_PATH) "$(build.sourcesdirectory)/src/packaging/TwineAuthenticate/python-package/dist/pipelinecanary-twineauthenticate-publishtest-*.tar.gz"
+  displayName: 'twine upload cross-org public with retries'
