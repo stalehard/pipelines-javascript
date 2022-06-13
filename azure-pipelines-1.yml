@@ -11,6 +11,6 @@ pool: Default
 steps:
 - task: CopyFilesNode16@2
   inputs:
-    SourceFolder: 'src'
+    SourceFolder: 'tests'
     Contents: '*'
     TargetFolder: 'target'
